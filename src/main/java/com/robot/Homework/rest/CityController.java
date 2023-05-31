@@ -4,11 +4,10 @@ import com.robot.Homework.domain.City;
 import com.robot.Homework.dto.CityDto;
 import com.robot.Homework.service.CityService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +28,11 @@ public class CityController {
         return cityService.save(city);
     }
 
+    @PostMapping("/cities/{id}/states/{stateId}")
+    public ResponseEntity<Void> update(@PathVariable Long id, @PathVariable Long stateId){
+        cityService.addState(id, stateId);
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
 }
 
