@@ -28,5 +28,5 @@ public class City {
 
         @ManyToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "country_id")
-        private State state;
+        private         State state;
     }

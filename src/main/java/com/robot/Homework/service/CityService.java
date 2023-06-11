@@ -41,4 +41,13 @@ public class CityService {
                 .stateId(stateId)
                 .build();
     }
+
+    public void addState(Long cityId, Long stateId){
+        var state = stateRepository.findById(stateId).get();
+        var city = cityRepository.findById(cityId).get();
+        city.setState(state);
+
+        cityRepository.save(city);
+    }
+
 }
